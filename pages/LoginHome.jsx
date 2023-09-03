@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { Button } from "@rneui/base";
 import ImageLogin from "../assets/loginImage.jpg";
 import { styleConstants } from "../constants/style";
@@ -42,6 +42,7 @@ const LoginHome = () => {
           </Button>
           <Text
             style={{ textDecorationLine: "underline", textAlign: "center" }}
+            onPress={() => navigation.navigate("HomeTabs")}
           >
             Iniciar Como Invitado
           </Text>
