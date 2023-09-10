@@ -44,7 +44,7 @@ const LoginHome = () => {
             style={{ textDecorationLine: "underline", textAlign: "center" }}
             onPress={() => navigation.navigate("HomeTabs")}
           >
-            Iniciar Como Invitado
+            Iniciar como invitado
           </Text>
         </View>
       </View>

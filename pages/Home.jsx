@@ -1,13 +1,22 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import Categories from '../components/Categories'
+import { View, Text, ScrollView, StyleSheet } from "react-native";
+import React from "react";
+import Categories from "../components/Categories";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Discussions from "../components/Discussions";
+import Articles from "../components/Articles";
 
 const Home = () => {
   return (
-    <View>
-      <Categories />
-    </View>
-  )
-}
+    <SafeAreaView style={{ flex: 1, backgroundColor: 'white'}}>
+      <ScrollView>
+        <Categories />
+        <Discussions />
+        <Articles />
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
 
-export default Home
+
+
+export default Home;

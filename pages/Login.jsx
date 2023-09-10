@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from "react-native";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { styleConstants } from "../constants/style";
 import { Button, Input } from "@rneui/base";
 import { useNavigation } from "@react-navigation/native";
@@ -10,6 +10,7 @@ const Login = () => {
   const handleVisibilityPassword = () => {
     setVisiblePassword(!visiblePassword);
   };
+
   return (
     <View style={styleConstants.container}>
       <View style={style.contentCard}>

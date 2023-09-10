@@ -61,7 +61,6 @@ const style = StyleSheet.create({
     width: "100%",
     height: "auto",
     paddingHorizontal: 15,
-    marginTop: 30,
     display: "flex",
     flexDirection: "column",
     gap: 20,
