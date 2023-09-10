@@ -1,14 +1,15 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Login from "./Login";
-import LoginHome from "./LoginHome";
+import Profile from "./Profile";
 import Home from "./Home";
 import { Icon } from "@rneui/base";
 import Create from "./Create";
+import { useNavigation } from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();
 const HomeTabs = () => {
+  const navigation = useNavigation()
   const optionsBase = {
     headerTitle: "",
     tabBarStyle: { paddingBottom: 5, height: 60 },
@@ -40,6 +41,7 @@ const HomeTabs = () => {
                 borderRadius: 100,
               }}
               iconStyle={{ color: "#5c3d21" }}
+              onPress={() => navigation.navigate("Profile")}
             />
           ),
           tabBarIcon: () => <Icon style={{ fontSize: 20 }} type="font-awesome" name="home"/>,
@@ -58,9 +60,15 @@ const HomeTabs = () => {
         }}
       />
       <Tab.Screen
-        name="LoginHome"
-        component={LoginHome}
-        options={{ ...optionsBase }}
+        name="Profile"
+        component={Profile}
+        options={{ 
+          title: 'Perfil',
+          headerTitle: 'Perfil personal',
+          tabBarIcon: () => <Icon style={{ fontSize: 20 }} type="font-awesome" name="user"/>,
+          tabBarStyle: { paddingBottom: 5, height: 60 },
+          tabBarLabelStyle: { fontSize: 15 },
+        }}
       />
     </Tab.Navigator>
   );

@@ -13,7 +13,6 @@ import { useNavigation } from "@react-navigation/native";
 const Create = () => {
   const categories = ["Producción", "Barismo", "Otros"];
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const navigation = useNavigation()
 
   const handleCategoryPress = (category) => {
     if (selectedCategory === category) {
@@ -85,7 +84,7 @@ const Create = () => {
           </View>
           <View>
             <Input
-              placeholder="URLs origen de la información"
+              placeholder="Descripción de la publicación"
               inputContainerStyle={style.inputStyle}
               leftIconContainerStyle={style.inputContainerStyle}
               label="Descripción (*)"
