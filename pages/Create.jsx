@@ -7,11 +7,13 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Input } from "@rneui/base";
+import { Button, Input } from "@rneui/base";
+import { useNavigation } from "@react-navigation/native";
 
 const Create = () => {
   const categories = ["Producción", "Barismo", "Otros"];
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const navigation = useNavigation()
 
   const handleCategoryPress = (category) => {
     if (selectedCategory === category) {
@@ -23,7 +25,9 @@ const Create = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <ScrollView>
-        <View style={{ width: "100%", paddingHorizontal: 16 }}>
+        <View
+          style={{ width: "100%", paddingHorizontal: 16, marginBottom: 25 }}
+        >
           <View>
             <Input
               placeholder="Nombre o encabezado de la publicación"
@@ -61,7 +65,66 @@ const Create = () => {
             </View>
           </View>
         </View>
+        <View style={{ width: "100%", paddingHorizontal: 16 }}>
+          <Text style={{ fontSize: 25, fontWeight: "bold", marginBottom: 10 }}>
+            Detalles de la publicación
+          </Text>
+          <View>
+            <Input
+              placeholder="URLs origen de la información"
+              inputContainerStyle={style.inputStyle}
+              leftIconContainerStyle={style.inputContainerStyle}
+              label="Fuentes"
+              labelStyle={{
+                fontWeight: "bold",
+                color: "black",
+                marginBottom: 10,
+                fontSize: 15,
+              }}
+            />
+          </View>
+          <View>
+            <Input
+              placeholder="URLs origen de la información"
+              inputContainerStyle={style.inputStyle}
+              leftIconContainerStyle={style.inputContainerStyle}
+              label="Descripción (*)"
+              labelStyle={{
+                fontWeight: "bold",
+                color: "black",
+                marginBottom: 10,
+                fontSize: 15,
+              }}
+              multiline={true}
+              numberOfLines={4}
+              textContentType="URL"
+            />
+          </View>
+          <Button buttonStyle={{ backgroundColor: "#E39B5A", borderRadius: 5 }}>
+            Subir imagen
+          </Button>
+        </View>
       </ScrollView>
+      <View style={style.interactionButton}>
+        <Button
+          containerStyle={{ width: "50%" }}
+          buttonStyle={{ borderRadius: 5, backgroundColor: "#E39B5A" }}
+        >
+          Subir
+        </Button>
+        <Button
+          containerStyle={{ width: "50%" }}
+          buttonStyle={{
+            borderRadius: 5,
+            backgroundColor: "transparent",
+            borderColor: "#E39B5A",
+            borderWidth: 2,
+          }}
+          titleStyle={{ color: "#E39B5A" }}
+        >
+          Cancelar
+        </Button>
+      </View>
     </SafeAreaView>
   );
 };
@@ -97,6 +160,16 @@ const style = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+  },
+  interactionButton: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 2,
+    width: "100%",
+    paddingHorizontal: 16,
+    paddingBottom: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

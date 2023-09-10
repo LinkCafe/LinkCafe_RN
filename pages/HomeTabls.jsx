@@ -42,7 +42,7 @@ const HomeTabs = () => {
               iconStyle={{ color: "#5c3d21" }}
             />
           ),
-          tabBarIcon: () => <Text style={{ fontSize: 20 }}>🏠</Text>,
+          tabBarIcon: () => <Icon style={{ fontSize: 20 }} type="font-awesome" name="home"/>,
           ...optionsBase,
         }}
       />
