@@ -6,10 +6,28 @@ import LoginHome from './pages/LoginHome';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import HomeTabs from './pages/HomeTabls';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+  React.useEffect( () => {
+    const handleDataAdmin = async () => {
+      const dataAdmin = {
+        nombre: "admin",
+        email: "admin@gmail.com",
+        password: "admin",
+        rol: 1
+      }
+      await AsyncStorage.setItem('dataAdmin', JSON.stringify(dataAdmin))
+    }
+
+    if (AsyncStorage.getItem('dataAdmin')) {
+      handleDataAdmin();
+    }
+  }, [])
+
   return (
     <NavigationContainer>
       <StatusBar />
