@@ -1,9 +1,7 @@
 import {
   View,
   Text,
-  StyleSheet,
-  TouchableOpacity,
-  Touchable,
+  StyleSheet
 } from "react-native";
 import React from "react";
 import { Button, Avatar } from "@rneui/base";

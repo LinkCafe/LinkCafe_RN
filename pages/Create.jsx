@@ -8,7 +8,7 @@ import {
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, Input } from "@rneui/base";
-import { useNavigation } from "@react-navigation/native";
+
 
 const Create = () => {
   const categories = ["Producción", "Barismo", "Otros"];

@@ -5,13 +5,10 @@ import { StatusBar } from 'expo-status-bar';
 import LoginHome from './pages/LoginHome';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-import Home from './pages/Home';
 import HomeTabs from './pages/HomeTabls';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Create from './pages/Create';
 
 const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
+
 export default function App() {
   return (
     <NavigationContainer>
