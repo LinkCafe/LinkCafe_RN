@@ -1,15 +1,16 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 import { Button } from "@rneui/base";
 import ImageLogin from "../assets/loginImage.jpg";
 import { styleConstants } from "../constants/style";
 import { useNavigation } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const LoginHome = () => {
   const navigation = useNavigation();
   return (
-    <View style={styleConstants.container}>
-      <View style={style.contentCard}>
+    <SafeAreaView style={styleConstants.container}>
+      <ScrollView style={style.contentCard}>
         <Image
           source={ImageLogin}
           style={{ width: "100%" }}
@@ -47,8 +48,8 @@ const LoginHome = () => {
             Iniciar como invitado
           </Text>
         </View>
-      </View>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

@@ -1,8 +1,9 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import React, { useState } from "react";
 import { styleConstants } from "../constants/style";
 import { Button, Input } from "@rneui/base";
 import { useNavigation } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Login = () => {
   const [visiblePassword, setVisiblePassword] = useState(true);
@@ -12,72 +13,72 @@ const Login = () => {
   };
 
   return (
-    <View style={styleConstants.container}>
-      <View style={style.contentCard}>
-        <Text
-          style={{
-            width: "100%",
-            paddingVertical: 40,
-            textAlign: "left",
-            fontSize: 25,
-            fontWeight: 500,
-          }}
-        >
-          Iniciar Sesión
-        </Text>
-        <Input
-          placeholder="Correo"
-          inputContainerStyle={style.inputStyle}
-          label="Correo"
-          leftIcon={{
-            type: "font-awesome",
-            name: "envelope",
-            color: "#E39B5A",
-          }}
-          leftIconContainerStyle={style.inputContainerStyle}
-          textContentType="emailAddress"
-          labelStyle={style.labelStyle}
-        />
-        <Input
-          placeholder="Contraseña"
-          inputContainerStyle={style.inputStyle}
-          label="Contraseña"
-          secureTextEntry={visiblePassword}
-          leftIcon={{ type: "font-awesome", name: "lock", color: "#E39B5A" }}
-          leftIconContainerStyle={style.inputContainerStyle}
-          labelStyle={style.labelStyle}
-          rightIcon={{
-            type: "font-awesome",
-            name: visiblePassword == true ? "eye" : "eye-slash",
-            onPress: () => handleVisibilityPassword(),
-          }}
-          rightIconContainerStyle={style.inputContainerStyle}
-        />
-        <Text
-          style={{
-            width: "100%",
-            textAlign: "right",
-            textDecorationLine: "underline",
-            color: "blue",
-          }}
-        >
-          ¿Olvidaste la contraseña?
-        </Text>
-        <View style={style.interaction}>
-          <Button buttonStyle={[style.button, style.btnLogin]}>
-            Iniciar Sesión
-          </Button>
-          <Text style={{ textAlign: "center", color: "gray" }}>o</Text>
-          <Button
-            buttonStyle={[style.button, style.btnSignUp]}
-            titleStyle={{ color: "#E39B5A" }}
-            onPress={() => navigation.navigate('SignUp')}
+    <SafeAreaView style={styleConstants.container}>
+      <ScrollView style={style.contentCard}>
+          <Text
+            style={{
+              width: "100%",
+              paddingVertical: 40,
+              textAlign: "left",
+              fontSize: 25,
+              fontWeight: 500,
+            }}
           >
-            Registrarse
-          </Button>
-        </View>
-      </View>
-    </View>
+            Iniciar Sesión
+          </Text>
+          <Input
+            placeholder="Correo"
+            inputContainerStyle={style.inputStyle}
+            label="Correo"
+            leftIcon={{
+              type: "font-awesome",
+              name: "envelope",
+              color: "#E39B5A",
+            }}
+            leftIconContainerStyle={style.inputContainerStyle}
+            textContentType="emailAddress"
+            labelStyle={style.labelStyle}
+          />
+          <Input
+            placeholder="Contraseña"
+            inputContainerStyle={style.inputStyle}
+            label="Contraseña"
+            secureTextEntry={visiblePassword}
+            leftIcon={{ type: "font-awesome", name: "lock", color: "#E39B5A" }}
+            leftIconContainerStyle={style.inputContainerStyle}
+            labelStyle={style.labelStyle}
+            rightIcon={{
+              type: "font-awesome",
+              name: visiblePassword == true ? "eye" : "eye-slash",
+              onPress: () => handleVisibilityPassword(),
+            }}
+            rightIconContainerStyle={style.inputContainerStyle}
+          />
+          <Text
+            style={{
+              width: "100%",
+              textAlign: "right",
+              textDecorationLine: "underline",
+              color: "blue",
+            }}
+          >
+            ¿Olvidaste la contraseña?
+          </Text>
+          <View style={style.interaction}>
+            <Button buttonStyle={[style.button, style.btnLogin]}>
+              Iniciar Sesión
+            </Button>
+            <Text style={{ textAlign: "center", color: "gray" }}>o</Text>
+            <Button
+              buttonStyle={[style.button, style.btnSignUp]}
+              titleStyle={{ color: "#E39B5A" }}
+              onPress={() => navigation.navigate('SignUp')}
+            >
+              Registrarse
+            </Button>
+          </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

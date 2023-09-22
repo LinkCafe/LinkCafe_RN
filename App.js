@@ -23,7 +23,7 @@ export default function App() {
       await AsyncStorage.setItem('dataAdmin', JSON.stringify(dataAdmin))
     }
 
-    if (AsyncStorage.getItem('dataAdmin')) {
+    if (!AsyncStorage.getItem('dataAdmin')) {
       handleDataAdmin();
     }
   }, [])
