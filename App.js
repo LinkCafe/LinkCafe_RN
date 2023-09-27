@@ -20,12 +20,12 @@ export default function App() {
         password: "admin",
         rol: 1
       }
-      await AsyncStorage.setItem('dataAdmin', JSON.stringify(dataAdmin))
+      const existingData = await AsyncStorage.getItem('dataAdmin');
+      if (!existingData) {
+        await AsyncStorage.setItem('dataAdmin', JSON.stringify(dataAdmin));
+      }
     }
-
-    if (!AsyncStorage.getItem('dataAdmin')) {
-      handleDataAdmin();
-    }
+    handleDataAdmin();
   }, [])
 
   return (

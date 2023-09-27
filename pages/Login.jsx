@@ -1,9 +1,10 @@
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, ToastAndroid } from "react-native";
 import React, { useState } from "react";
 import { styleConstants } from "../constants/style";
 import { Button, Input } from "@rneui/base";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = () => {
   const [visiblePassword, setVisiblePassword] = useState(true);
@@ -11,6 +12,20 @@ const Login = () => {
   const handleVisibilityPassword = () => {
     setVisiblePassword(!visiblePassword);
   };
+  const [password, setPassword ] = useState(null)
+  const [email, setEmail ] = useState(null)
+  const handleLogin = async () => {
+    const data = JSON.parse(await AsyncStorage.getItem('dataAdmin'))
+    if (password == data.password && email == data.email) {
+      navigation.navigate('HomeTabs')
+    } else {
+      ToastAndroid.showWithGravity(
+        'Error al iniciar sesión',
+        ToastAndroid.SHORT,
+        ToastAndroid.BOTTOM,
+      );
+    }
+  }
 
   return (
     <SafeAreaView style={styleConstants.container}>
@@ -37,7 +52,9 @@ const Login = () => {
             }}
             leftIconContainerStyle={style.inputContainerStyle}
             textContentType="emailAddress"
+            keyboardType="email-address"
             labelStyle={style.labelStyle}
+            onChangeText={(text) => setEmail(text)}
           />
           <Input
             placeholder="Contraseña"
@@ -53,6 +70,7 @@ const Login = () => {
               onPress: () => handleVisibilityPassword(),
             }}
             rightIconContainerStyle={style.inputContainerStyle}
+            onChangeText={(text) => setPassword(text)}
           />
           <Text
             style={{
@@ -65,7 +83,7 @@ const Login = () => {
             ¿Olvidaste la contraseña?
           </Text>
           <View style={style.interaction}>
-            <Button buttonStyle={[style.button, style.btnLogin]}>
+            <Button buttonStyle={[style.button, style.btnLogin]} onPress={handleLogin}>
               Iniciar Sesión
             </Button>
             <Text style={{ textAlign: "center", color: "gray" }}>o</Text>
