@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 import { Button } from "@rneui/base";
-import ImageLogin from "../assets/loginImage.jpg";
 import { styleConstants } from "../constants/style";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -12,7 +11,7 @@ const LoginHome = () => {
     <SafeAreaView style={styleConstants.container}>
       <ScrollView style={style.contentCard}>
         <Image
-          source={ImageLogin}
+          source={require('../assets/loginImage.jpg')}
           style={{ width: "100%" }}
           resizeMode="contain"
         />
