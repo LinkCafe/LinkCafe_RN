@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import React, { useState } from "react";
 import { styleConstants } from "../constants/style";
 import { Button, Input } from "@rneui/base";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const SignUp = () => {
     const [visiblePassword, setVisiblePassword] = useState(true);
@@ -9,8 +10,8 @@ const SignUp = () => {
       setVisiblePassword(!visiblePassword);
     };
     return (
-      <View style={styleConstants.container}>
-        <View style={style.contentCard}>
+      <SafeAreaView style={styleConstants.container}>
+        <ScrollView style={style.contentCard}>
           <Text
             style={{
               width: "100%",
@@ -71,8 +72,8 @@ const SignUp = () => {
               Registrarse
             </Button>
           </View>
-        </View>
-      </View>
+        </ScrollView>
+      </SafeAreaView>
     );
 }
 
