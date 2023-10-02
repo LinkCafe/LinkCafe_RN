@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import HomeTabs from './pages/HomeTabls';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ThemeProvider } from './context/ThemeContext';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,20 +32,22 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar />
-      <Stack.Navigator>
-        <Stack.Screen name="LoginHome" component={LoginHome} options={{ headerShown: false }} />
-        <Stack.Screen name="Login" component={Login} options={{
-          title: ''
-        }} />
-        <Stack.Screen name="SignUp" component={SignUp} options={{
-          title: ''
-        }} />
-        <Stack.Screen name="HomeTabs" component={HomeTabs} options={{
-          title: '',
-          headerShown: false
-        }} />
-      </Stack.Navigator>
-     
+      <ThemeProvider>
+        <Stack.Navigator>
+          <Stack.Screen name="LoginHome" component={LoginHome} options={{ headerShown: false }} />
+          <Stack.Screen name="Login" component={Login} options={{
+            title: ''
+          }} />
+          <Stack.Screen name="SignUp" component={SignUp} options={{
+            title: ''
+          }} />
+          <Stack.Screen name="HomeTabs" component={HomeTabs} options={{
+            title: '',
+            headerShown: false
+          }} />
+        </Stack.Navigator>
+      </ThemeProvider>
+    
     </NavigationContainer>
   );
 }

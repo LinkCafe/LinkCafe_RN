@@ -5,9 +5,10 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, Input } from "@rneui/base";
+import ThemeContext from "../context/ThemeContext";
 
 
 const Create = () => {
@@ -21,8 +22,10 @@ const Create = () => {
       setSelectedCategory(category);
     }
   };
+
+  const { theme } = useContext(ThemeContext)
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme == 'light' ? "white" : '#202020' }}>
       <ScrollView>
         <View
           style={{ width: "100%", paddingHorizontal: 16, marginBottom: 25 }}
@@ -35,15 +38,18 @@ const Create = () => {
               label="Nombre (*)"
               labelStyle={{
                 fontWeight: "bold",
-                color: "black",
+                color: theme == 'light' ? "black" : 'white',
                 marginBottom: 10,
                 fontSize: 15,
+              }}
+              style={{ 
+                color: theme == 'light' ? 'black' : 'white'
               }}
             />
           </View>
           <View style={{ marginLeft: 10 }}>
             <Text
-              style={{ fontSize: 16, marginBottom: 10, fontWeight: "bold" }}
+              style={{ fontSize: 16, marginBottom: 10, fontWeight: "bold", color: theme == 'light' ?  'black' : 'white'}}
             >
               Tipo de publicación (*)
             </Text>
@@ -55,17 +61,20 @@ const Create = () => {
                     style.categoryButton,
                     selectedCategory === category &&
                       style.selectedCategoryButton,
+                    {
+                      backgroundColor: theme == 'light' ? "#eee" : 'gray',
+                    }
                   ]}
                   onPress={() => handleCategoryPress(category)}
                 >
-                  <Text style={style.categoryButtonText}>{category}</Text>
+                  <Text style={[style.categoryButtonText, { color: theme == 'light' ? "#333" : 'white'}]}>{category}</Text>
                 </TouchableOpacity>
               ))}
             </View>
           </View>
         </View>
         <View style={{ width: "100%", paddingHorizontal: 16 }}>
-          <Text style={{ fontSize: 25, fontWeight: "bold", marginBottom: 10 }}>
+          <Text style={{ fontSize: 25, fontWeight: "bold", marginBottom: 10, color: theme == 'light' ?  'black' : 'white' }}>
             Detalles de la publicación
           </Text>
           <View>
@@ -76,9 +85,12 @@ const Create = () => {
               label="Fuentes"
               labelStyle={{
                 fontWeight: "bold",
-                color: "black",
+                color: theme == 'light' ? "black" : 'white',
                 marginBottom: 10,
                 fontSize: 15,
+              }}
+              style={{ 
+                color: theme == 'light' ? 'black' : 'white'
               }}
             />
           </View>
@@ -90,13 +102,16 @@ const Create = () => {
               label="Descripción (*)"
               labelStyle={{
                 fontWeight: "bold",
-                color: "black",
+                color: theme == 'light' ? "black" : 'white',
                 marginBottom: 10,
                 fontSize: 15,
               }}
               multiline={true}
               numberOfLines={4}
               textContentType="URL"
+              style={{ 
+                color: theme == 'light' ? 'black' : 'white'
+              }}
             />
           </View>
           <Button buttonStyle={{ backgroundColor: "#E39B5A", borderRadius: 5 }}>
@@ -119,7 +134,7 @@ const Create = () => {
             borderColor: "#E39B5A",
             borderWidth: 2,
           }}
-          titleStyle={{ color: "#E39B5A" }}
+          titleStyle={{ color: theme == 'light' ? "#E39B5A" : 'white' }}
         >
           Cancelar
         </Button>
@@ -137,7 +152,6 @@ const style = StyleSheet.create({
     paddingHorizontal: 20,
   },
   categoryButton: {
-    backgroundColor: "#eee",
     padding: 7,
     borderRadius: 5,
   },
@@ -146,14 +160,13 @@ const style = StyleSheet.create({
   },
   categoryButtonText: {
     fontSize: 16,
-    fontWeight: "400",
-    color: "#333",
+    fontWeight: "400"
   },
   inputStyle: {
     paddingLeft: 10,
-    borderColor: "gray",
+    borderColor: "#eeeeee",
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 5
   },
   inputContainerStyle: {
     display: "flex",

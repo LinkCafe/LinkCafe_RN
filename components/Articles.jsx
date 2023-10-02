@@ -5,10 +5,11 @@ import {
   StyleSheet,
   Image
 } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Avatar, Card } from "@rneui/base";
 import { Button } from "@rneui/base";
+import ThemeContext from "../context/ThemeContext";
 
 const Articles = () => {
   const data = [
@@ -25,21 +26,23 @@ const Articles = () => {
       categoria: "Noticia",
     }
   ];
+
+  const { theme } = useContext(ThemeContext)
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={style.moreCategories}>
-        <Text style={style.moreCategoriesText}>Artículos recomendados</Text>
+        <Text style={[style.moreCategoriesText, { color: theme == 'light' ? 'black' : 'white' }]}>Artículos recomendados</Text>
         <Button
           type="outline"
           title="Ver todos >"
-          buttonStyle={{ padding: 1, borderColor: "black", borderWidth: 1 }}
-          titleStyle={{ color: "black" }}
+          buttonStyle={{ padding: 1, borderColor: theme == 'light' ? 'black' : 'white', borderWidth: 1 }}
+          titleStyle={{ color: theme == 'light' ? 'black' : 'white' }}
         />
       </View>
       <ScrollView horizontal={true}>
         <View style={style.containerCard}>
           {data.map((d, index) => (
-            <Card key={index} containerStyle={style.card}>
+            <Card key={index} containerStyle={[style.card, { backgroundColor: theme == 'light' ? 'white' : '#434343' }]}>
               <Image
                 source={{
                   uri: d.imagen,
@@ -47,7 +50,7 @@ const Articles = () => {
                   height: 150,
                 }}
               />
-              <Text style={{ paddingTop: 12 }}>{d.titulo}</Text>
+              <Text style={{ paddingTop: 12, color: theme == 'light' ? 'black' : 'white' }}>{d.titulo}</Text>
               <View
                 style={{
                   display: "flex",
@@ -62,7 +65,8 @@ const Articles = () => {
                   style={{
                     padding: 5,
                     borderRadius: 5,
-                    backgroundColor: "#3e3e3e26",
+                    backgroundColor: theme == 'light' ? "#3e3e3e26" : 'gray',
+                    color: theme == 'light' ? 'black' : 'white'
                   }}
                 >
                   {d.categoria}

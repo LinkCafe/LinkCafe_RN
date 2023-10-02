@@ -60,6 +60,7 @@ const SignUp = () => {
             rightIcon={{
               type: "font-awesome",
               name: visiblePassword == true ? "eye" : "eye-slash",
+              color: "#E39B5A",
               onPress: () => handleVisibilityPassword(),
             }}
             rightIconContainerStyle={style.inputContainerStyle}
@@ -88,7 +89,7 @@ const style = StyleSheet.create({
     },
     inputStyle: {
       padding: 2,
-      borderColor: "gray",
+      borderColor: "#eeeeee",
       borderWidth: 1,
       borderRadius: 5,
     },

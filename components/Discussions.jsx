@@ -5,10 +5,12 @@ import {
   StyleSheet,
   Image
 } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Avatar, Card } from "@rneui/base";
 import { Button } from "@rneui/base";
+import ThemeContext from "../context/ThemeContext";
+
 
 const Discussions = () => {
   const data = [
@@ -37,21 +39,24 @@ const Discussions = () => {
       persona: "Fernando",
     },
   ];
+
+  const { theme } = useContext(ThemeContext)
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={style.moreCategories}>
-        <Text style={style.moreCategoriesText}>Últimas discusiones</Text>
+        <Text style={[style.moreCategoriesText, { color: theme == 'light' ? 'black' : 'white' }]}>Últimas discusiones</Text>
         <Button
           type="outline"
           title="Ver todas >"
-          buttonStyle={{ padding: 1, borderColor: "black", borderWidth: 1 }}
-          titleStyle={{ color: "black" }}
+          buttonStyle={{ padding: 1, borderColor: theme == 'light' ? 'black' : 'white', borderWidth: 1 }}
+          titleStyle={{ color: theme == 'light' ? 'black' : 'white' }}
         />
       </View>
       <ScrollView horizontal={true}>
         <View style={style.containerCard}>
           {data.map((d, index) => (
-            <Card key={index} containerStyle={style.card}>
+            <Card key={index} containerStyle={[style.card, { backgroundColor: theme == 'light' ? 'white' : '#464646' }]}>
               <Image
                 source={{
                   uri: d.imagen,
@@ -59,7 +64,7 @@ const Discussions = () => {
                   height: 150,
                 }}
               />
-              <Text style={{ paddingTop: 12 }}>{d.titulo}</Text>
+              <Text style={{ paddingTop: 12, color: theme == 'light' ? 'black' : 'white' }}>{d.titulo}</Text>
               <View
                 style={{
                   display: "flex",
@@ -72,7 +77,7 @@ const Discussions = () => {
                 <Text
                   style={{
                     backgroundColor:
-                      d.veridica == true ? "#54e3203e" : "#E920203e",
+                      d.veridica == true ? theme == 'light' ? "#54e3203e" : '#75DF77' : theme == 'light' ? "#E920203e" : '#FF7070',
                     padding: 5,
                     borderRadius: 5,
                   }}
@@ -83,7 +88,8 @@ const Discussions = () => {
                   style={{
                     padding: 5,
                     borderRadius: 5,
-                    backgroundColor: "#3e3e3e26",
+                    backgroundColor: theme == 'light' ? "#3e3e3e26" : 'gray',
+                    color: theme == 'light' ? 'black' : 'white'
                   }}
                 >
                   {d.categoria}
@@ -99,7 +105,7 @@ const Discussions = () => {
                 }}
               >
                 <Avatar />
-                <Text style={{ fontWeight: "bold" }}>{d.persona}</Text>
+                <Text style={{ fontWeight: "bold", color: theme == 'light' ? 'black' : 'white' }}>{d.persona}</Text>
               </View>
             </Card>
           ))}
@@ -108,6 +114,8 @@ const Discussions = () => {
     </SafeAreaView>
   );
 };
+
+
 
 const style = StyleSheet.create({
   containerCard: {

@@ -3,19 +3,21 @@ import {
   Text,
   StyleSheet
 } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Avatar } from "@rneui/base";
+import ThemeContext from "../context/ThemeContext";
 
 const Categories = () => {
+  const { theme } = useContext(ThemeContext)
   return (
     <View style={style.container}>
       <View style={style.moreCategories}>
-        <Text style={style.moreCategoriesText}>Temas de conversación</Text>
+        <Text style={[style.moreCategoriesText, { color: theme == 'light' ? 'black' : 'white' }]}>Temas de conversación</Text>
         <Button
           type="outline"
           title="Ver todo >"
-          buttonStyle={{ padding: 1, borderColor: "black", borderWidth: 1 }}
-          titleStyle={{ color: "black" }}
+          buttonStyle={{ padding: 1, borderColor: theme == 'light' ? 'black' : 'white', borderWidth: 1 }}
+          titleStyle={{ color: theme == 'light' ? 'black' : 'white' }}
         />
       </View>
       <View style={style.categoriesContainer}>
@@ -27,7 +29,7 @@ const Categories = () => {
             titleStyle={style.styleButton.icon}
             containerStyle={{ backgroundColor: "#e9e9e9"  }}
           />
-          <Text style={style.styleButton.text}>Producción</Text>
+          <Text style={[style.styleButton.text, { color: theme == 'light' ? 'black' : 'white'}]}>Producción</Text>
         </Button>
         <Button buttonStyle={style.styleButton}>
           <Avatar
@@ -37,7 +39,7 @@ const Categories = () => {
             titleStyle={style.styleButton.icon}
             containerStyle={{ backgroundColor: "#e9e9e9" }}
           />
-          <Text style={style.styleButton.text}>Barismo</Text>
+          <Text style={[style.styleButton.text, { color: theme == 'light' ? 'black' : 'white'}]}>Barismo</Text>
         </Button>
         <Button buttonStyle={style.styleButton}>
           <Avatar
@@ -47,7 +49,7 @@ const Categories = () => {
             titleStyle={style.styleButton.icon}
             containerStyle={{ backgroundColor: "#e9e9e9" }}
           />
-          <Text style={style.styleButton.text}>Entre Otros</Text>
+          <Text style={[style.styleButton.text, { color: theme == 'light' ? 'black' : 'white'}]}>Entre Otros</Text>
         </Button>
       </View>
     </View>
