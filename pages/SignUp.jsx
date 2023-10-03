@@ -1,14 +1,43 @@
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, ToastAndroid } from "react-native";
 import React, { useState } from "react";
 import { styleConstants } from "../constants/style";
 import { Button, Input } from "@rneui/base";
 import { SafeAreaView } from "react-native-safe-area-context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 
 const SignUp = () => {
+    const navigation = useNavigation()
     const [visiblePassword, setVisiblePassword] = useState(true);
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const handleVisibilityPassword = () => {
       setVisiblePassword(!visiblePassword);
     };
+
+    const handleSignUp = async () => {
+      if (!name || !email || !password) {
+        ToastAndroid.showWithGravity(
+          'Campos incompletos',
+          ToastAndroid.SHORT,
+          ToastAndroid.BOTTOM,
+        );
+        return;
+      } else {
+        await AsyncStorage.setItem('name', name)
+        await AsyncStorage.setItem('email', email)
+        await AsyncStorage.setItem('password', password)
+        ToastAndroid.showWithGravity(
+          'Registro completado',
+          ToastAndroid.LONG,
+          ToastAndroid.BOTTOM,
+        );
+        navigation.navigate("Login")
+      }
+
+    }
+ 
     return (
       <SafeAreaView style={styleConstants.container}>
         <ScrollView style={style.contentCard}>
@@ -35,6 +64,7 @@ const SignUp = () => {
             leftIconContainerStyle={style.inputContainerStyle}
             textContentType="emailAddress"
             labelStyle={style.labelStyle}
+            onChangeText={(text) => setName(text)}
           />
           <Input
             placeholder="Correo"
@@ -48,6 +78,7 @@ const SignUp = () => {
             leftIconContainerStyle={style.inputContainerStyle}
             textContentType="emailAddress"
             labelStyle={style.labelStyle}
+            onChangeText={(text) => setEmail(text)}
           />
           <Input
             placeholder="Contraseña"
@@ -64,11 +95,13 @@ const SignUp = () => {
               onPress: () => handleVisibilityPassword(),
             }}
             rightIconContainerStyle={style.inputContainerStyle}
+            onChangeText={(text) => setPassword(text)}
           />
           <View style={style.interaction}>
             <Button
               buttonStyle={[style.button, style.btnSignUp]}
               titleStyle={{ color: "#E39B5A" }}
+              onPress={() => handleSignUp()}
             >
               Registrarse
             </Button>

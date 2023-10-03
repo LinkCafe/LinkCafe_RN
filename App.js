@@ -8,6 +8,7 @@ import SignUp from './pages/SignUp';
 import HomeTabs from './pages/HomeTabls';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeProvider } from './context/ThemeContext';
+import DetailsProfile from './pages/DetailsProfile';
 
 const Stack = createNativeStackNavigator();
 
@@ -44,6 +45,9 @@ export default function App() {
           <Stack.Screen name="HomeTabs" component={HomeTabs} options={{
             title: '',
             headerShown: false
+          }} />
+          <Stack.Screen name='DetailsProfile' component={DetailsProfile} options={{
+            title: 'Editar Usuario'
           }} />
         </Stack.Navigator>
       </ThemeProvider>

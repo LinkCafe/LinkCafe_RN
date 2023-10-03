@@ -10,13 +10,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Avatar, Card } from "@rneui/base";
 import { Button } from "@rneui/base";
 import ThemeContext from "../context/ThemeContext";
-
+import coffeImage from "../assets/coffe.webp"
 
 const Discussions = () => {
   const data = [
     {
       imagen:
-        "https://images.pexels.com/photos/16645682/pexels-photo-16645682/free-photo-of-naturaleza-arbusto-jardin-hojas.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+        "https://media.istockphoto.com/id/1467739359/es/foto/taza-de-caf%C3%A9-con-humo-y-granos-de-caf%C3%A9-sobre-fondo-de-madera-viejo.jpg?b=1&s=612x612&w=0&k=20&c=-bfZYQ6Y8VdLEPofS1RqLLqM6OkV7vqVNniv52ksD1s=",
       titulo: "Por qué se debe sembrar en luna llena?",
       veridica: true,
       categoria: "Producción 🌱",
@@ -24,7 +24,7 @@ const Discussions = () => {
     },
     {
       imagen:
-        "https://images.pexels.com/photos/16645682/pexels-photo-16645682/free-photo-of-naturaleza-arbusto-jardin-hojas.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+        "https://images.pexels.com/photos/6239866/pexels-photo-6239866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       titulo: "Por qué se debe sembrar en luna llena?",
       veridica: false,
       categoria: "Producción 🌱",
@@ -32,7 +32,7 @@ const Discussions = () => {
     },
     {
       imagen:
-        "https://images.pexels.com/photos/16645682/pexels-photo-16645682/free-photo-of-naturaleza-arbusto-jardin-hojas.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+        "https://images.pexels.com/photos/12833512/pexels-photo-12833512.jpeg?auto=compress&cs=tinysrgb&w=600",
       titulo: "Por qué se debe sembrar en luna llena?",
       veridica: false,
       categoria: "Producción 🌱",

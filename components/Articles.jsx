@@ -15,13 +15,13 @@ const Articles = () => {
   const data = [
     {
       imagen:
-        "https://images.pexels.com/photos/51343/old-letters-old-letter-handwriting-51343.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        "https://images.pexels.com/photos/1002703/pexels-photo-1002703.jpeg?auto=compress&cs=tinysrgb&w=600",
       titulo: "Prácticas avanzadas para la producción de café ",
       categoria: "PDF",
     },
     {
       imagen:
-        "https://images.pexels.com/photos/51343/old-letters-old-letter-handwriting-51343.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6U0IIzs_1vCo98DWEMa81gAhQNlI-13986A&usqp=CAU",
       titulo: "El café sube un 10,2% su precio actual ",
       categoria: "Noticia",
     }

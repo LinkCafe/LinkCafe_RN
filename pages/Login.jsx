@@ -15,8 +15,9 @@ const Login = () => {
   const [password, setPassword ] = useState(null)
   const [email, setEmail ] = useState(null)
   const handleLogin = async () => {
-    const data = JSON.parse(await AsyncStorage.getItem('dataAdmin'))
-    if (password == data.password && email == data.email) {
+    const emailStorage = await AsyncStorage.getItem('email')
+    const passwordStorage = await AsyncStorage.getItem('password')
+    if (password == passwordStorage && email == emailStorage) {
       navigation.navigate('HomeTabs')
     } else {
       ToastAndroid.showWithGravity(

@@ -1,12 +1,25 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView, ToastAndroid } from "react-native";
 import { Button } from "@rneui/base";
 import { styleConstants } from "../constants/style";
 import { useNavigation, useTheme } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LoginHome = () => {
   const navigation = useNavigation();
+  const handleGuest = async () => {
+    await AsyncStorage.setItem('name', 'Invitado')
+    await AsyncStorage.setItem('email', 'invitado@gmail.com')
+    await AsyncStorage.setItem('password', 'invitado')
+
+    navigation.navigate('HomeTabs')
+    ToastAndroid.showWithGravity(
+      'Sesión como invitado',
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+    );
+  }
   return (
     <SafeAreaView style={styleConstants.container}>
       <ScrollView style={style.contentCard}>
@@ -42,7 +55,7 @@ const LoginHome = () => {
           </Button>
           <Text
             style={{ textDecorationLine: "underline", textAlign: "center" }}
-            onPress={() => navigation.navigate("HomeTabs")}
+            onPress={() => handleGuest()}
           >
             Iniciar como invitado
           </Text>
