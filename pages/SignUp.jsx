@@ -44,7 +44,7 @@ const SignUp = () => {
           <Text
             style={{
               width: "100%",
-              paddingVertical: 40,
+              paddingVertical: 15,
               textAlign: "left",
               fontSize: 25,
               fontWeight: 500,

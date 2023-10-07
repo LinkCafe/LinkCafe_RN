@@ -37,7 +37,7 @@ const LoginHome = () => {
           <Text style={{ textTransform: "capitalize", fontWeight: "bold" }}>
             expertos
           </Text>
-          , descubre el café y adquiere conocimiento veraz ✌
+          , descubre más sobre el café y adquiere conocimiento veraz. ✌
         </Text>
         <View style={style.interaccion}>
           <Button
