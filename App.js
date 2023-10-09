@@ -9,6 +9,7 @@ import HomeTabs from './pages/HomeTabls';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeProvider } from './context/ThemeContext';
 import DetailsProfile from './pages/DetailsProfile';
+import CategoriesPages from './pages/CategoriesPages';
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +49,9 @@ export default function App() {
           }} />
           <Stack.Screen name='DetailsProfile' component={DetailsProfile} options={{
             title: 'Editar Usuario'
+          }} />
+          <Stack.Screen name='CategoriesFull' component={CategoriesPages} options={{
+            title: 'Temas de conversación',
           }} />
         </Stack.Navigator>
       </ThemeProvider>

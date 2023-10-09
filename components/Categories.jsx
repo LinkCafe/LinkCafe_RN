@@ -6,9 +6,11 @@ import {
 import React, { useContext } from "react";
 import { Button, Avatar } from "@rneui/base";
 import ThemeContext from "../context/ThemeContext";
+import { useNavigation } from "@react-navigation/native";
 
 const Categories = () => {
   const { theme } = useContext(ThemeContext)
+  const navigation = useNavigation()
   return (
     <View style={style.container}>
       <View style={style.moreCategories}>
@@ -18,20 +20,27 @@ const Categories = () => {
           title="Ver todo >"
           buttonStyle={{ padding: 1, borderColor: theme == 'light' ? 'black' : 'white', borderWidth: 1 }}
           titleStyle={{ color: theme == 'light' ? 'black' : 'white' }}
+          onPress={() => navigation.navigate("CategoriesFull", {
+            type: 'all'
+          })}
         />
       </View>
       <View style={style.categoriesContainer}>
-        <Button buttonStyle={style.styleButton}>
+        <Button buttonStyle={[style.styleButton, { backgroundColor: theme == 'light' ? "#fafafa" : 'transparent' }]} onPress={() => navigation.navigate("CategoriesFull", {
+          type: 'produccion'
+        })}>
           <Avatar
             size={40}
             rounded
             title="🌱"
             titleStyle={style.styleButton.icon}
-            containerStyle={{ backgroundColor: "#e9e9e9"  }}
+            containerStyle={{ backgroundColor: "#e9e9e9" }}
           />
-          <Text style={[style.styleButton.text, { color: theme == 'light' ? 'black' : 'white'}]}>Producción</Text>
+          <Text style={[style.styleButton.text, { color: theme == 'light' ? 'black' : 'white' }]}>Producción</Text>
         </Button>
-        <Button buttonStyle={style.styleButton}>
+        <Button buttonStyle={[style.styleButton, { backgroundColor: theme == 'light' ? "#fafafa" : 'transparent' }]} onPress={() => navigation.navigate("CategoriesFull", {
+          type: 'barismo'
+        })} >
           <Avatar
             size={40}
             rounded
@@ -39,9 +48,11 @@ const Categories = () => {
             titleStyle={style.styleButton.icon}
             containerStyle={{ backgroundColor: "#e9e9e9" }}
           />
-          <Text style={[style.styleButton.text, { color: theme == 'light' ? 'black' : 'white'}]}>Barismo</Text>
+          <Text style={[style.styleButton.text, { color: theme == 'light' ? 'black' : 'white' }]}>Barismo</Text>
         </Button>
-        <Button buttonStyle={style.styleButton}>
+        <Button buttonStyle={[style.styleButton, { backgroundColor: theme == 'light' ? "#fafafa" : 'transparent' }]} onPress={() => navigation.navigate("CategoriesFull", {
+          type: 'otros'
+        })}>
           <Avatar
             size={40}
             rounded
@@ -49,7 +60,7 @@ const Categories = () => {
             titleStyle={style.styleButton.icon}
             containerStyle={{ backgroundColor: "#e9e9e9" }}
           />
-          <Text style={[style.styleButton.text, { color: theme == 'light' ? 'black' : 'white'}]}>Entre Otros</Text>
+          <Text style={[style.styleButton.text, { color: theme == 'light' ? 'black' : 'white' }]}>Entre Otros</Text>
         </Button>
       </View>
     </View>
@@ -88,7 +99,6 @@ const style = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     paddingVertical: 20,
-    backgroundColor: "transparent",
     borderColor: "#797979",
     borderWidth: 1,
     borderRadius: 7,
